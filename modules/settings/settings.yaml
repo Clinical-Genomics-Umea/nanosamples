@@ -1,0 +1,26 @@
+---
+no_pos_ctrls:
+  default_value: 1
+  label: 'No of pos controls'
+  control: 'QLineEdit'
+min_no_neg_ctrls:
+  default_value: 1
+  label: 'Minimum no of neg controls'
+  control: 'QLineEdit'
+dataset_folder:
+  default_value: None
+  label: 'Saved datasets folder'
+  control: 'QLineEdit_QPushButton'
+import_folder:
+  default_value: None
+  label: 'Import worksheet folder'
+  control: 'QLineEdit_QPushButton'
+samplesheet_folder:
+  default_value: None
+  label: 'Export samplesheets folder'
+  control: 'QLineEdit_QPushButton'
+protocols_folder:
+  default_value: None
+  label: 'Export protocols folder'
+  control: 'QLineEdit_QPushButton'
+

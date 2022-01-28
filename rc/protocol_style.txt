@@ -1,0 +1,28 @@
+<style>
+    .doc_title
+    {
+      font-size: 60px;
+      text-align: center;
+    }
+    .td_p
+    {
+     line-height: 0.5;
+    }
+    table { border: 1px solid black; border-collapse: collapse; margin-left: 100px;}
+    th {font-weight: bold;}
+    th, td {
+        padding-left: 10px;
+        padding-right: 10px;
+        text-align: left;
+        height: 2px;
+    }
+    tr {height: 2px;}
+    @media print
+    {
+      ul    { page-break-inside:avoid }
+      h1    { page-break-before:always }
+      table { page-break-inside:avoid}
+      thead { display:table-header-group }
+      tfoot { display:table-footer-group }
+    }
+</style>

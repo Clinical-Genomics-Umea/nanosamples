@@ -1,0 +1,360 @@
+---
+ws_fields_tr:
+  'Beställarkod': 'client_code'
+  'Kön': 'sex'
+  'Prov ID': 'internal_lab_id'
+  'Provdatum': 'sample_date'
+  'Analys': 'analysis'
+  'Ålder (vid provtagning)': 'age'
+  'ProvNr': 'sample_id'
+  'Godkännandedatum': 'approval_date'
+  'Resultat': 'ct_value'
+
+ws_fields_dtypes:
+  'Beställarkod': 'object'
+  'Kön': 'object'
+  'Prov ID': 'object'
+  'Provdatum': 'object'
+  'Analys': 'object'
+  'Ålder (vid provtagning)': 'int'
+  'ProvNr': 'object'
+  'Godkännandedatum': 'object'
+  'Resultat': 'object'
+
+model_fields:
+  primary_sort_order:  # allows sort where positive and negative controls ar kept in the beginning and end
+    hidden: True     # sortfilterproxy models sort functions reimplemented to make use of this
+    col_width: 30
+    edit: True
+    checkable: False
+    delegates: [ 'None' ]
+    dtype: 'int'
+  deleted:
+    hidden: True
+    col_width: 30
+    edit: True
+    checkable: False
+    delegates: [ 'None' ]
+    dtype: 'object'
+  'mark':
+    hidden: False
+    col_width: 60
+    edit: True
+    checkable: True
+    delegates: [ 'checkbox' ]
+    dtype: 'int'
+  'sample_id':
+    hidden: False
+    col_width: 100
+    edit: False
+    checkable: True
+    delegates: [ 'None' ]
+    dtype: 'object'
+  'internal_lab_id':
+    hidden: False
+    col_width: 110
+    edit: False
+    checkable: True
+    delegates: [ 'None' ]
+    dtype: 'object'
+  'barcode':
+    hidden: False
+    col_width: 80
+    edit: True
+    checkable: True
+    delegates: [ 'None' ]
+    dtype: 'object'
+  'flow_cell_id':
+    hidden: False
+    col_width: 100
+    edit: False
+    checkable: True
+    delegates: [ 'None' ]
+    dtype: 'object'
+  'kit':
+    hidden: False
+    col_width: 100
+    edit: True
+    checkable: False
+    delegates: [ 'None' ]
+    dtype: 'object'
+  'experiment_id':
+    hidden: False
+    col_width: 100
+    edit: True
+    checkable: False
+    delegates: [ 'None' ]
+    dtype: 'object'
+  'alias':
+    hidden: False
+    col_width: 100
+    edit: True
+    checkable: False
+    delegates: [ 'None' ]
+    dtype: 'object'
+  'type':
+    hidden: False
+    col_width: 100
+    edit: False
+    checkable: False
+    delegates: [ 'None' ]
+    dtype: 'object'
+  'ct_value':
+    hidden: False
+    col_width: 80
+    edit: False
+    checkable: True
+    delegates: [ 'None' ]
+    dtype: 'object'
+  'age':
+    hidden: False
+    col_width: 50
+    edit: False
+    checkable: True
+    delegates: [ 'None' ]
+    dtype: 'int'
+  'sex':
+    hidden: False
+    col_width: 50
+    edit: False
+    checkable: True
+    delegates: [ 'None' ]
+    dtype: 'object'
+  'client_code':
+    hidden: False
+    col_width: 100
+    edit: False
+    checkable: True
+    delegates: ['None']
+    dtype: 'object'
+  'analysis':
+    hidden: False
+    col_width: 80
+    edit: False
+    checkable: True
+    delegates: [ 'None' ]
+    dtype: 'object'
+  'sample_date':
+    hidden: False
+    col_width: 120
+    edit: False
+    checkable: True
+    delegates: [ 'None' ]
+    dtype: 'object'
+  'approval_date':
+    hidden: False
+    col_width: 110
+    edit: False
+    checkable: True
+    delegates: [ 'None' ]
+    dtype: 'object'
+
+field_select:
+  kit:
+    - "SQK-RBK110.96 EXP-MRT001"
+
+
+sample_defaults:
+  test_sample:
+    primary_sort_order: 100
+    deleted: "False"
+    'mark': 0
+    'sample_id': None
+    'internal_lab_id': None
+    'barcode': ""
+    'flow_cell_id': ""
+    'kit': ""
+    'experiment_id': ""
+    'alias': ""
+    'type': "test_sample"
+    'ct_value': None
+    'age': None
+    'sex': None
+    'client_code': None
+    'analysis': None
+    'sample_date': None
+    'approval_date': None
+  positive_control:
+    'primary_sort_order': 0
+    'deleted': "False"
+    'mark': 0
+    'sample_id': "POSITIVE-X"
+    'internal_lab_id': None
+    'barcode': ""
+    'flow_cell_id': ""
+    'kit': ""
+    'experiment_id': ""
+    'alias': ""
+    'type': "positive_control"
+    'ct_value': "POSITIVE"
+    'age': 0
+    'sex': None
+    'client_code': None
+    'analysis': None
+    'sample_date': "2000-01-01"
+    'approval_date': "2000-01-01"
+  negative_control:
+    'primary_sort_order': 1000
+    'deleted': "False"
+    'mark': 0
+    'sample_id': "NEGATIVE-X"
+    'internal_lab_id': None
+    'barcode': ""
+    'flow_cell_id': ""
+    'kit': ""
+    'experiment_id': ""
+    'alias': ""
+    'type': "negative_control"
+    'ct_value': "NEGATIVE"
+    'age': 0
+    'sex': None
+    'client_code': None
+    'analysis': None
+    'sample_date': "2000-01-01"
+    'approval_date': "2000-01-01"
+
+controls:
+  positive:
+    primary_sort_order: 0
+    deleted: False
+    mark: 0
+    internal_lab_id: "None"
+    sample_id: "POSITIVE-X"
+    barcode: ""
+    flow_cell_id: ""
+    ct_value: "POSITIVE"
+    age: 0
+    sex: NA
+    client_code: NA
+    analysis: NA
+    sample_date: "2000-01-01"
+    approval_date: "2000-01-01"
+  negative:
+    primary_sort_order: 1000
+    deleted: False
+    mark: 0
+    internal_lab_id: "None"
+    sample_id: "NEGATIVE-X"
+    barcode: ""
+    flow_cell_id: ""
+    ct_value: "NEGATIVE"
+    age: 0
+    sex: NA
+    client_code: NA
+    analysis: NA
+    sample_date: "2000-01-01"
+    approval_date: "2000-01-01"
+  min_no_ctrls:
+    positive: 1
+    negative: 1
+
+list2plate:
+  '1': 'a1'
+  '2': 'b1'
+  '3': 'c1'
+  '4': 'd1'
+  '5': 'e1'
+  '6': 'f1'
+  '7': 'g1'
+  '8': 'h1'
+  '9': 'a2'
+  '10': 'b2'
+  '11': 'c2'
+  '12': 'd2'
+  '13': 'e2'
+  '14': 'f2'
+  '15': 'g2'
+  '16': 'h2'
+  '17': 'a3'
+  '18': 'b3'
+  '19': 'c3'
+  '20': 'd3'
+  '21': 'e3'
+  '22': 'f3'
+  '23': 'g3'
+  '24': 'h3'
+  '25': 'a4'
+  '26': 'b4'
+  '27': 'c4'
+  '28': 'd4'
+  '29': 'e4'
+  '30': 'f4'
+  '31': 'g4'
+  '32': 'h4'
+  '33': 'a5'
+  '34': 'b5'
+  '35': 'c5'
+  '36': 'd5'
+  '37': 'e5'
+  '38': 'f5'
+  '39': 'g5'
+  '40': 'h5'
+  '41': 'a6'
+  '42': 'b6'
+  '43': 'c6'
+  '44': 'd6'
+  '45': 'e6'
+  '46': 'f6'
+  '47': 'g6'
+  '48': 'h6'
+  '49': 'a7'
+  '50': 'b7'
+  '51': 'c7'
+  '52': 'd7'
+  '53': 'e7'
+  '54': 'f7'
+  '55': 'g7'
+  '56': 'h7'
+  '57': 'a8'
+  '58': 'b8'
+  '59': 'c8'
+  '60': 'd8'
+  '61': 'e8'
+  '62': 'f8'
+  '63': 'g8'
+  '64': 'h8'
+  '65': 'a9'
+  '66': 'b9'
+  '67': 'c9'
+  '68': 'd9'
+  '69': 'e9'
+  '70': 'f9'
+  '71': 'g9'
+  '72': 'h9'
+  '73': 'a10'
+  '74': 'b10'
+  '75': 'c10'
+  '76': 'd10'
+  '77': 'e10'
+  '78': 'f10'
+  '79': 'g10'
+  '80': 'h10'
+  '81': 'a11'
+  '82': 'b11'
+  '83': 'c11'
+  '84': 'd11'
+  '85': 'e11'
+  '86': 'f11'
+  '87': 'g11'
+  '88': 'h11'
+  '89': 'a12'
+  '90': 'b12'
+  '91': 'c12'
+  '92': 'd12'
+  '93': 'e12'
+  '94': 'f12'
+  '95': 'g12'
+  '96': 'h12'
+
+samplesheet:
+  fields:
+    flow_cell_id
+    kit
+    sample_id
+    experiment_id
+    barcode
+    alias
+    type
+
+
+

@@ -1,0 +1,68 @@
+---
+reagents:
+  no_reactions:
+    1:
+      'vatten': '3,7'
+      'primer': '0,05'
+      'mastermix': '6,25'
+      'totalt': '10'
+    8:
+      'vatten': '34'
+      'primer': '0,5'
+      'mastermix': '58'
+      'totalt': '92,5'
+    16:
+      'vatten': '68'
+      'primer': '1'
+      'mastermix': '115'
+      'totalt': '184'
+    24:
+      'vatten': '102'
+      'primer': '1,5'
+      'mastermix': '173'
+      'totalt': '276,5'
+    32:
+      'vatten': '136'
+      'primer': '2'
+      'mastermix': '230'
+      'totalt': '368'
+    40:
+      'vatten': '170'
+      'primer': '2,5'
+      'mastermix': '288'
+      'totalt': '460,5'
+    48:
+      'vatten': '204'
+      'primer': '3'
+      'mastermix': '345'
+      'totalt': '552'
+    56:
+      'vatten': '238'
+      'primer': '3,5'
+      'mastermix': '403'
+      'totalt': '644,5'
+    64:
+      'vatten': '272'
+      'primer': '4'
+      'mastermix': '460'
+      'totalt': '736'
+    72:
+      'vatten': '306'
+      'primer': '4,5'
+      'mastermix': '518'
+      'totalt': '828,5'
+    80:
+      'vatten': '340'
+      'primer': '5'
+      'mastermix': '575'
+      'totalt': '920'
+    88:
+      'vatten': '374'
+      'primer': '5,5'
+      'mastermix': '633'
+      'totalt': '1012,5'
+    96:
+      'vatten': '408'
+      'primer': '6'
+      'mastermix': '690'
+      'totalt': '1104'
