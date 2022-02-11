@@ -26,7 +26,7 @@ import resources
 from modules.delegates.delegates import IconCheckBoxDelegate
 import mammoth
 import functools
-import pdfkit
+#import pdfkit
 
 PROJECT_DIR = Path(__file__).parents[2]
 APPS_DIR = PROJECT_DIR / 'apps'
@@ -37,9 +37,9 @@ __version__ = "0.1.0"
 
 def data_loaded(func):
     @functools.wraps(func)
-    def wrapper(self, *args, **kwargs):
+    def wrapper(self, *args):
         if self.model is not None:
-            return func(self, *args, **kwargs)
+            return func(self, *args)
 
     return wrapper
 
@@ -57,11 +57,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.protocol_style = Path("rc", "protocol_style.txt").read_text()
         self.ordered_fields = list(self.config['model_fields'].keys())
         self.stackedWidget.setCurrentIndex(0)
-        self.lineEdit_flowcell.setPlaceholderText("Flowcell ID")
 
-        pdir = Path(__file__).parent
-        wkhtmltopdf = str(Path(pdir, 'wkhtmltox', 'bin', 'wkhtmltopdf.exe'))
-        self.pdfkit_config = pdfkit.configuration(wkhtmltopdf=wkhtmltopdf)
+        # pdir = Path(__file__).parent
+        # wkhtmltopdf = str(Path(pdir, 'wkhtmltox', 'bin', 'wkhtmltopdf.exe'))
+        # self.pdfkit_config = pdfkit.configuration(wkhtmltopdf=wkhtmltopdf)
 
         self.picker = IndexListPicker()
         self.verticalLayout_barcodes.addWidget(self.picker)
@@ -69,8 +68,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         for name in self.barcodes:
             self.picker.add_indexes(name, self.barcodes[name])
 
-        self.init_ui()
         self.model = None
+        self.populate_cb_kits()
+        self.init_ui()
         self.active_filtermodel = None
         self.inactive_filtermodel = None
 
@@ -86,14 +86,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.pushButton_togglerem.setIcon(QIcon('icons/swap-horizontal.svg'))
         self.pushButton_resetsort.setIcon(QIcon('icons/restore.svg'))
         self.pushButton_addcontrols.setIcon(QIcon('icons/flag-plus.svg'))
-        self.pushButton_flowcell.setIcon(QIcon('icons/air-filter.svg'))
+        # self.pushButton_flowcell.setIcon(QIcon('icons/air-filter.svg'))
         self.pushButton_clrbarcodes.setIcon(QIcon('icons/barcode-off.svg'))
         self.actionExport_samplesheet.setIcon(QIcon('icons/table_export.svg'))
         self.actionExport_protocol.setIcon(QIcon('icons/file-export-outline.svg'))
 
     def init_ui(self):
         self.toolBar.setMinimumHeight(40)
-        self.toolBar.setStyleSheet("QToolBar {border-bottom: 1px solid rgba(218.000, 220.000, 224.000, 1.000)}")
+        self.toolBar.setStyleSheet("QToolBar {border-bottom: 3px solid rgba(218.000, 220.000, 224.000, 1.000)}")
         self.toolBar.setToolButtonStyle(Qt.ToolButtonTextUnderIcon)
         self.set_icons()
         self.init_settings_view()
@@ -102,8 +102,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         self.toolBar.setMovable(False)
 
-        self.tabWidget.setTabText(0, "Samples")
-        self.tabWidget.setTabText(1, "Removed")
         self.widget_barcodes.setMaximumWidth(100)
         self.tabWidget.setCurrentIndex(0)
 
@@ -113,7 +111,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.pushButton_togglerem.clicked.connect(self.remove_marked)
         self.pushButton_resetsort.clicked.connect(self.reset_sort)
         self.pushButton_addcontrols.clicked.connect(self.insert_controls)
-        self.pushButton_flowcell.clicked.connect(self.set_flowcell_value)
         self.actionShowPlate.triggered.connect(self.show_plate)
         self.actionPreferences.triggered.connect(self.show_prefs)
         self.actionData.triggered.connect(self.show_data)
@@ -123,6 +120,44 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.actionOpen.triggered.connect(self.open_data)
         self.actionSave.triggered.connect(self.save_data)
         self.actionExport_protocol.triggered.connect(self.export_protocol)
+        self.comboBox_kits.currentIndexChanged.connect(self.update_kit)
+        self.lineEdit_flowcell.textChanged.connect(self.update_flowcell)
+        self.lineEdit_exp_id.textChanged.connect(self.update_exp_id)
+
+        actions = [self.actionOpen,
+                   self.actionSave,
+                   self.actionImport,
+                   self.actionExport,
+                   self.actionExport_protocol,
+                   self.actionData]
+
+        for a in actions:
+            b = self.toolBar.widgetForAction(a)
+            b.setMinimumWidth(70)
+
+    def populate_cb_kits(self):
+        k_dict = load_yaml(Path("rc", "kits.yaml"))
+        k_list = ['']
+
+        for k in k_dict['kits']:
+            k_list.append(k)
+
+        self.comboBox_kits.addItems(k_list)
+
+    def update_flowcell(self):
+        value = self.lineEdit_flowcell.text().strip()
+        self.model.set_field_value('flow_cell_id', value)
+
+    def update_exp_id(self):
+        value = self.lineEdit_exp_id.text().strip()
+        self.model.set_field_value('experiment_id', value)
+
+    def update_kit(self):
+        value = self.comboBox_kits.currentText().strip()
+        self.model.set_field_value('kit', value)
+
+    def select_kit(self):
+        pass
 
     @data_loaded
     def save_data(self):
@@ -260,11 +295,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         dlg.exec()
 
     @data_loaded
-    def set_flowcell_value(self):
-        value = self.lineEdit_flowcell.text()
-        self.model.set_field_value('flowcell', value)
-
-    @data_loaded
     def insert_controls(self):
 
         active_df = self.df.loc[(self.df.primary_sort_order == 100) & (self.df.deleted == 'False')]
@@ -312,6 +342,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         df = pd.concat([df_pos, self.df, df_neg]).reset_index(drop=True)
         self.df = df[self.ordered_fields]
         self.set_model()
+
+        self.update_flowcell()
+        self.update_kit()
+        self.update_exp_id()
 
     def add_checkbox_delegates(self):
         mark_col = self.ordered_fields.index("mark")
@@ -420,11 +454,16 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 le.textChanged.connect(self.changed_settings_lineedit)
 
             elif settings[key]['control'] == 'QLineEdit':
-                le.setText(str(settings[key]['value']))
-                validator = QIntValidator()
-                le.setValidator(validator)
-                form_layout.addRow(label, le)
-                le.editingFinished.connect(self.changed_settings_lineedit)
+                if settings[key]['validator'] == 'int':
+                    le.setText(str(settings[key]['value']))
+                    validator = QIntValidator()
+                    le.setValidator(validator)
+                    form_layout.addRow(label, le)
+                    le.editingFinished.connect(self.changed_settings_lineedit)
+                else:
+                    le.setText(str(settings[key]['value']))
+                    form_layout.addRow(label, le)
+                    le.editingFinished.connect(self.changed_settings_lineedit)
 
         self.verticalLayout_prefs.addLayout(form_layout)
 

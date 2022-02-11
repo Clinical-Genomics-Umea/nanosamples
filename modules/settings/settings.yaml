@@ -1,26 +1,47 @@
 ---
+user:
+  default_value: None
+  label: 'User name'
+  control: 'QLineEdit'
+  validator: None
 no_pos_ctrls:
   default_value: 1
   label: 'No of pos controls'
   control: 'QLineEdit'
+  validator: int
 min_no_neg_ctrls:
   default_value: 1
   label: 'Minimum no of neg controls'
   control: 'QLineEdit'
+  validator: int
 dataset_folder:
   default_value: None
   label: 'Saved datasets folder'
   control: 'QLineEdit_QPushButton'
+  validator: None
 import_folder:
   default_value: None
   label: 'Import worksheet folder'
   control: 'QLineEdit_QPushButton'
+  validator: None
 samplesheet_folder:
   default_value: None
   label: 'Export samplesheets folder'
   control: 'QLineEdit_QPushButton'
+  validator: None
+samplesheet_naming_convention:
+  default_value: '%u-COR-%Y%d%mT%H%M%S-samplesheet.csv'
+  label: 'Samplesheet file naming convention'
+  control: 'QLineEdit'
+  validator: None
 protocols_folder:
   default_value: None
-  label: 'Export protocols folder'
+  label: 'Export protocol folder'
   control: 'QLineEdit_QPushButton'
+  validator: None
+protocol_naming_convention:
+  default_value: '%u-COR-%Y%d%mT%H%M%S-protocol.pdf'
+  label: 'Protocol file naming convention'
+  control: 'QLineEdit'
+  validator: None
 

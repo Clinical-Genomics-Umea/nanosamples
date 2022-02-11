@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1150</width>
+    <width>1156</width>
     <height>622</height>
    </rect>
   </property>
@@ -66,70 +66,135 @@
            </layout>
           </widget>
           <widget class="QWidget" name="widget_data" native="true">
-           <layout class="QVBoxLayout" name="verticalLayout_2">
-            <property name="leftMargin">
-             <number>4</number>
-            </property>
-            <property name="topMargin">
-             <number>0</number>
-            </property>
-            <property name="rightMargin">
-             <number>0</number>
-            </property>
+           <layout class="QVBoxLayout" name="verticalLayout_7">
             <property name="bottomMargin">
              <number>0</number>
             </property>
             <item>
-             <layout class="QFormLayout" name="formLayout_2">
-              <item row="0" column="0">
+             <layout class="QHBoxLayout" name="horizontalLayout_5">
+              <item>
+               <widget class="QLabel" name="label_3">
+                <property name="text">
+                 <string>EXP ID: </string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="lineEdit_exp_id">
+                <property name="maximumSize">
+                 <size>
+                  <width>200</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="Line" name="line_2">
+                <property name="orientation">
+                 <enum>Qt::Vertical</enum>
+                </property>
+               </widget>
+              </item>
+              <item>
                <widget class="QLabel" name="label">
                 <property name="text">
-                 <string>ENTER FLOWCELL ID</string>
+                 <string>KIT: </string>
                 </property>
                </widget>
               </item>
-              <item row="0" column="1">
-               <layout class="QHBoxLayout" name="horizontalLayout_3">
-                <item>
-                 <widget class="QLineEdit" name="lineEdit_flowcell">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="toolTip">
-                   <string>Enter flowcell id (must match id on flowcell)</string>
-                  </property>
-                  <property name="text">
-                   <string/>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QPushButton" name="pushButton_flowcell">
-                  <property name="text">
-                   <string>ADD/UPDATE</string>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
+              <item>
+               <widget class="QComboBox" name="comboBox_kits">
+                <property name="minimumSize">
+                 <size>
+                  <width>200</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>200</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+               </widget>
               </item>
-              <item row="1" column="0">
+              <item>
+               <widget class="Line" name="line">
+                <property name="orientation">
+                 <enum>Qt::Vertical</enum>
+                </property>
+               </widget>
+              </item>
+              <item>
                <widget class="QLabel" name="label_2">
                 <property name="text">
-                 <string>SELECT KIT</string>
+                 <string>FLOW CELL ID: </string>
                 </property>
                </widget>
               </item>
-              <item row="1" column="1">
-               <widget class="QComboBox" name="comboBox"/>
+              <item>
+               <widget class="QLineEdit" name="lineEdit_flowcell">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>200</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>200</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="toolTip">
+                 <string>Enter flowcell id (must match id on flowcell)</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="horizontalSpacer_7">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
               </item>
              </layout>
             </item>
             <item>
+             <spacer name="verticalSpacer_2">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Fixed</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>10</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
              <layout class="QHBoxLayout" name="horizontalLayout">
-              <item>
+              <item alignment="Qt::AlignLeft">
                <widget class="QPushButton" name="pushButton_togglerem">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -139,7 +204,7 @@
                 </property>
                 <property name="minimumSize">
                  <size>
-                  <width>200</width>
+                  <width>150</width>
                   <height>0</height>
                  </size>
                 </property>
@@ -147,7 +212,7 @@
                  <string>Delete or restore sample</string>
                 </property>
                 <property name="text">
-                 <string>DEL/RESTORE SAMPLES</string>
+                 <string>DEL/RESTR SPLS</string>
                 </property>
                </widget>
               </item>
@@ -156,15 +221,18 @@
                 <property name="orientation">
                  <enum>Qt::Horizontal</enum>
                 </property>
+                <property name="sizeType">
+                 <enum>QSizePolicy::Fixed</enum>
+                </property>
                 <property name="sizeHint" stdset="0">
                  <size>
-                  <width>40</width>
+                  <width>10</width>
                   <height>20</height>
                  </size>
                 </property>
                </spacer>
               </item>
-              <item>
+              <item alignment="Qt::AlignLeft">
                <widget class="QPushButton" name="pushButton_addcontrols">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -174,7 +242,7 @@
                 </property>
                 <property name="minimumSize">
                  <size>
-                  <width>200</width>
+                  <width>150</width>
                   <height>0</height>
                  </size>
                 </property>
@@ -182,7 +250,7 @@
                  <string>Add positive and negative control samples</string>
                 </property>
                 <property name="text">
-                 <string>ADD/UPDATE CTRL SAMPLES</string>
+                 <string>UPDATE CTRLS</string>
                 </property>
                </widget>
               </item>
@@ -191,15 +259,18 @@
                 <property name="orientation">
                  <enum>Qt::Horizontal</enum>
                 </property>
+                <property name="sizeType">
+                 <enum>QSizePolicy::Fixed</enum>
+                </property>
                 <property name="sizeHint" stdset="0">
                  <size>
-                  <width>40</width>
+                  <width>10</width>
                   <height>20</height>
                  </size>
                 </property>
                </spacer>
               </item>
-              <item>
+              <item alignment="Qt::AlignLeft">
                <widget class="QPushButton" name="pushButton_resetsort">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -209,7 +280,7 @@
                 </property>
                 <property name="minimumSize">
                  <size>
-                  <width>200</width>
+                  <width>150</width>
                   <height>0</height>
                  </size>
                 </property>
@@ -226,15 +297,18 @@
                 <property name="orientation">
                  <enum>Qt::Horizontal</enum>
                 </property>
+                <property name="sizeType">
+                 <enum>QSizePolicy::Fixed</enum>
+                </property>
                 <property name="sizeHint" stdset="0">
                  <size>
-                  <width>40</width>
+                  <width>10</width>
                   <height>20</height>
                  </size>
                 </property>
                </spacer>
               </item>
-              <item>
+              <item alignment="Qt::AlignLeft">
                <widget class="QPushButton" name="pushButton_clrbarcodes">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -244,7 +318,7 @@
                 </property>
                 <property name="minimumSize">
                  <size>
-                  <width>200</width>
+                  <width>150</width>
                   <height>0</height>
                  </size>
                 </property>
@@ -252,12 +326,47 @@
                  <string>Clear all barcodes in data</string>
                 </property>
                 <property name="text">
-                 <string>CLEAR BARCODES</string>
+                 <string>CLR BCODES</string>
                 </property>
                </widget>
               </item>
               <item>
                <spacer name="horizontalSpacer_4">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeType">
+                 <enum>QSizePolicy::Fixed</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>10</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item alignment="Qt::AlignLeft">
+               <widget class="QPushButton" name="pushButton_clrdata">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>150</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string>CLR TABLE</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="horizontalSpacer_5">
                 <property name="orientation">
                  <enum>Qt::Horizontal</enum>
                 </property>
@@ -268,25 +377,6 @@
                  </size>
                 </property>
                </spacer>
-              </item>
-              <item>
-               <widget class="QPushButton" name="pushButton_clrdata">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>200</width>
-                  <height>0</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string>CLEAR DATA TABLE</string>
-                </property>
-               </widget>
               </item>
              </layout>
             </item>
@@ -311,9 +401,9 @@
               <property name="currentIndex">
                <number>1</number>
               </property>
-              <widget class="QWidget" name="tab">
+              <widget class="QWidget" name="samples_tab">
                <attribute name="title">
-                <string>Tab 1</string>
+                <string>SAMPLES</string>
                </attribute>
                <layout class="QVBoxLayout" name="verticalLayout_3">
                 <property name="spacing">
@@ -333,9 +423,9 @@
                 </item>
                </layout>
               </widget>
-              <widget class="QWidget" name="tab_2">
+              <widget class="QWidget" name="remove_tab">
                <attribute name="title">
-                <string>Tab 2</string>
+                <string>REMOVED</string>
                </attribute>
                <layout class="QHBoxLayout" name="horizontalLayout_2">
                 <property name="spacing">
@@ -387,6 +477,9 @@
    <property name="windowTitle">
     <string>toolBar</string>
    </property>
+   <property name="toolButtonStyle">
+    <enum>Qt::ToolButtonTextUnderIcon</enum>
+   </property>
    <attribute name="toolBarArea">
     <enum>TopToolBarArea</enum>
    </attribute>
@@ -397,6 +490,7 @@
    <addaction name="actionSave"/>
    <addaction name="separator"/>
    <addaction name="actionImport"/>
+   <addaction name="separator"/>
    <addaction name="actionExport"/>
    <addaction name="actionExport_protocol"/>
    <addaction name="actionExport_samplesheet"/>
@@ -426,7 +520,7 @@
   </action>
   <action name="actionShowPlate">
    <property name="text">
-    <string>Show Protocol</string>
+    <string>Protocol</string>
    </property>
    <property name="toolTip">
     <string>Show protocol</string>
@@ -442,7 +536,7 @@
   </action>
   <action name="actionPreferences">
    <property name="text">
-    <string>Show Settings</string>
+    <string>Settings</string>
    </property>
    <property name="toolTip">
     <string>Show settings view</string>
@@ -476,7 +570,7 @@
   </action>
   <action name="actionData">
    <property name="text">
-    <string>Show Data</string>
+    <string>Data</string>
    </property>
    <property name="toolTip">
     <string>Show Data View</string>
@@ -484,7 +578,7 @@
   </action>
   <action name="actionExport_protocol">
    <property name="text">
-    <string>Export Protocol</string>
+    <string>Exp Prot As</string>
    </property>
    <property name="toolTip">
     <string>Export Protocol As</string>
@@ -492,7 +586,7 @@
   </action>
   <action name="actionExport_samplesheet">
    <property name="text">
-    <string>Export Samplesheet</string>
+    <string>Exp Sheet As</string>
    </property>
    <property name="toolTip">
     <string>Export SampleSheet As</string>

@@ -16,7 +16,7 @@ from PySide6.QtGui import (QAction, QBrush, QColor, QConicalGradient,
     QIcon, QImage, QKeySequence, QLinearGradient,
     QPainter, QPalette, QPixmap, QRadialGradient,
     QTransform)
-from PySide6.QtWidgets import (QApplication, QComboBox, QFormLayout, QHBoxLayout,
+from PySide6.QtWidgets import (QApplication, QComboBox, QFrame, QHBoxLayout,
     QHeaderView, QLabel, QLineEdit, QMainWindow,
     QPushButton, QSizePolicy, QSpacerItem, QSplitter,
     QStackedWidget, QTabWidget, QTableView, QToolBar,
@@ -26,7 +26,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1150, 622)
+        MainWindow.resize(1156, 622)
         self.actionOpen = QAction(MainWindow)
         self.actionOpen.setObjectName(u"actionOpen")
         self.actionClose = QAction(MainWindow)
@@ -81,48 +81,75 @@ class Ui_MainWindow(object):
         self.splitter.addWidget(self.widget_barcodes)
         self.widget_data = QWidget(self.splitter)
         self.widget_data.setObjectName(u"widget_data")
-        self.verticalLayout_2 = QVBoxLayout(self.widget_data)
-        self.verticalLayout_2.setObjectName(u"verticalLayout_2")
-        self.verticalLayout_2.setContentsMargins(4, 0, 0, 0)
-        self.formLayout_2 = QFormLayout()
-        self.formLayout_2.setObjectName(u"formLayout_2")
+        self.verticalLayout_7 = QVBoxLayout(self.widget_data)
+        self.verticalLayout_7.setObjectName(u"verticalLayout_7")
+        self.verticalLayout_7.setContentsMargins(-1, -1, -1, 0)
+        self.horizontalLayout_5 = QHBoxLayout()
+        self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
+        self.label_3 = QLabel(self.widget_data)
+        self.label_3.setObjectName(u"label_3")
+
+        self.horizontalLayout_5.addWidget(self.label_3)
+
+        self.lineEdit_exp_id = QLineEdit(self.widget_data)
+        self.lineEdit_exp_id.setObjectName(u"lineEdit_exp_id")
+        self.lineEdit_exp_id.setMaximumSize(QSize(200, 16777215))
+
+        self.horizontalLayout_5.addWidget(self.lineEdit_exp_id)
+
+        self.line_2 = QFrame(self.widget_data)
+        self.line_2.setObjectName(u"line_2")
+        self.line_2.setFrameShape(QFrame.VLine)
+        self.line_2.setFrameShadow(QFrame.Sunken)
+
+        self.horizontalLayout_5.addWidget(self.line_2)
+
         self.label = QLabel(self.widget_data)
         self.label.setObjectName(u"label")
 
-        self.formLayout_2.setWidget(0, QFormLayout.LabelRole, self.label)
+        self.horizontalLayout_5.addWidget(self.label)
 
-        self.horizontalLayout_3 = QHBoxLayout()
-        self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
-        self.lineEdit_flowcell = QLineEdit(self.widget_data)
-        self.lineEdit_flowcell.setObjectName(u"lineEdit_flowcell")
-        sizePolicy = QSizePolicy(QSizePolicy.MinimumExpanding, QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.lineEdit_flowcell.sizePolicy().hasHeightForWidth())
-        self.lineEdit_flowcell.setSizePolicy(sizePolicy)
+        self.comboBox_kits = QComboBox(self.widget_data)
+        self.comboBox_kits.setObjectName(u"comboBox_kits")
+        self.comboBox_kits.setMinimumSize(QSize(200, 0))
+        self.comboBox_kits.setMaximumSize(QSize(200, 16777215))
 
-        self.horizontalLayout_3.addWidget(self.lineEdit_flowcell)
+        self.horizontalLayout_5.addWidget(self.comboBox_kits)
 
-        self.pushButton_flowcell = QPushButton(self.widget_data)
-        self.pushButton_flowcell.setObjectName(u"pushButton_flowcell")
+        self.line = QFrame(self.widget_data)
+        self.line.setObjectName(u"line")
+        self.line.setFrameShape(QFrame.VLine)
+        self.line.setFrameShadow(QFrame.Sunken)
 
-        self.horizontalLayout_3.addWidget(self.pushButton_flowcell)
-
-
-        self.formLayout_2.setLayout(0, QFormLayout.FieldRole, self.horizontalLayout_3)
+        self.horizontalLayout_5.addWidget(self.line)
 
         self.label_2 = QLabel(self.widget_data)
         self.label_2.setObjectName(u"label_2")
 
-        self.formLayout_2.setWidget(1, QFormLayout.LabelRole, self.label_2)
+        self.horizontalLayout_5.addWidget(self.label_2)
 
-        self.comboBox = QComboBox(self.widget_data)
-        self.comboBox.setObjectName(u"comboBox")
+        self.lineEdit_flowcell = QLineEdit(self.widget_data)
+        self.lineEdit_flowcell.setObjectName(u"lineEdit_flowcell")
+        sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.lineEdit_flowcell.sizePolicy().hasHeightForWidth())
+        self.lineEdit_flowcell.setSizePolicy(sizePolicy)
+        self.lineEdit_flowcell.setMinimumSize(QSize(200, 0))
+        self.lineEdit_flowcell.setMaximumSize(QSize(200, 16777215))
 
-        self.formLayout_2.setWidget(1, QFormLayout.FieldRole, self.comboBox)
+        self.horizontalLayout_5.addWidget(self.lineEdit_flowcell)
+
+        self.horizontalSpacer_7 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_5.addItem(self.horizontalSpacer_7)
 
 
-        self.verticalLayout_2.addLayout(self.formLayout_2)
+        self.verticalLayout_7.addLayout(self.horizontalLayout_5)
+
+        self.verticalSpacer_2 = QSpacerItem(20, 10, QSizePolicy.Minimum, QSizePolicy.Fixed)
+
+        self.verticalLayout_7.addItem(self.verticalSpacer_2)
 
         self.horizontalLayout = QHBoxLayout()
         self.horizontalLayout.setObjectName(u"horizontalLayout")
@@ -133,11 +160,11 @@ class Ui_MainWindow(object):
         sizePolicy1.setVerticalStretch(0)
         sizePolicy1.setHeightForWidth(self.pushButton_togglerem.sizePolicy().hasHeightForWidth())
         self.pushButton_togglerem.setSizePolicy(sizePolicy1)
-        self.pushButton_togglerem.setMinimumSize(QSize(200, 0))
+        self.pushButton_togglerem.setMinimumSize(QSize(150, 0))
 
-        self.horizontalLayout.addWidget(self.pushButton_togglerem)
+        self.horizontalLayout.addWidget(self.pushButton_togglerem, 0, Qt.AlignLeft)
 
-        self.horizontalSpacer_3 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.horizontalSpacer_3 = QSpacerItem(10, 20, QSizePolicy.Fixed, QSizePolicy.Minimum)
 
         self.horizontalLayout.addItem(self.horizontalSpacer_3)
 
@@ -145,11 +172,11 @@ class Ui_MainWindow(object):
         self.pushButton_addcontrols.setObjectName(u"pushButton_addcontrols")
         sizePolicy1.setHeightForWidth(self.pushButton_addcontrols.sizePolicy().hasHeightForWidth())
         self.pushButton_addcontrols.setSizePolicy(sizePolicy1)
-        self.pushButton_addcontrols.setMinimumSize(QSize(200, 0))
+        self.pushButton_addcontrols.setMinimumSize(QSize(150, 0))
 
-        self.horizontalLayout.addWidget(self.pushButton_addcontrols)
+        self.horizontalLayout.addWidget(self.pushButton_addcontrols, 0, Qt.AlignLeft)
 
-        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.horizontalSpacer_2 = QSpacerItem(10, 20, QSizePolicy.Fixed, QSizePolicy.Minimum)
 
         self.horizontalLayout.addItem(self.horizontalSpacer_2)
 
@@ -157,11 +184,11 @@ class Ui_MainWindow(object):
         self.pushButton_resetsort.setObjectName(u"pushButton_resetsort")
         sizePolicy1.setHeightForWidth(self.pushButton_resetsort.sizePolicy().hasHeightForWidth())
         self.pushButton_resetsort.setSizePolicy(sizePolicy1)
-        self.pushButton_resetsort.setMinimumSize(QSize(200, 0))
+        self.pushButton_resetsort.setMinimumSize(QSize(150, 0))
 
-        self.horizontalLayout.addWidget(self.pushButton_resetsort)
+        self.horizontalLayout.addWidget(self.pushButton_resetsort, 0, Qt.AlignLeft)
 
-        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.horizontalSpacer = QSpacerItem(10, 20, QSizePolicy.Fixed, QSizePolicy.Minimum)
 
         self.horizontalLayout.addItem(self.horizontalSpacer)
 
@@ -169,11 +196,11 @@ class Ui_MainWindow(object):
         self.pushButton_clrbarcodes.setObjectName(u"pushButton_clrbarcodes")
         sizePolicy1.setHeightForWidth(self.pushButton_clrbarcodes.sizePolicy().hasHeightForWidth())
         self.pushButton_clrbarcodes.setSizePolicy(sizePolicy1)
-        self.pushButton_clrbarcodes.setMinimumSize(QSize(200, 0))
+        self.pushButton_clrbarcodes.setMinimumSize(QSize(150, 0))
 
-        self.horizontalLayout.addWidget(self.pushButton_clrbarcodes)
+        self.horizontalLayout.addWidget(self.pushButton_clrbarcodes, 0, Qt.AlignLeft)
 
-        self.horizontalSpacer_4 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.horizontalSpacer_4 = QSpacerItem(10, 20, QSizePolicy.Fixed, QSizePolicy.Minimum)
 
         self.horizontalLayout.addItem(self.horizontalSpacer_4)
 
@@ -181,45 +208,49 @@ class Ui_MainWindow(object):
         self.pushButton_clrdata.setObjectName(u"pushButton_clrdata")
         sizePolicy1.setHeightForWidth(self.pushButton_clrdata.sizePolicy().hasHeightForWidth())
         self.pushButton_clrdata.setSizePolicy(sizePolicy1)
-        self.pushButton_clrdata.setMinimumSize(QSize(200, 0))
+        self.pushButton_clrdata.setMinimumSize(QSize(150, 0))
 
-        self.horizontalLayout.addWidget(self.pushButton_clrdata)
+        self.horizontalLayout.addWidget(self.pushButton_clrdata, 0, Qt.AlignLeft)
+
+        self.horizontalSpacer_5 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout.addItem(self.horizontalSpacer_5)
 
 
-        self.verticalLayout_2.addLayout(self.horizontalLayout)
+        self.verticalLayout_7.addLayout(self.horizontalLayout)
 
         self.verticalSpacer = QSpacerItem(20, 10, QSizePolicy.Minimum, QSizePolicy.Fixed)
 
-        self.verticalLayout_2.addItem(self.verticalSpacer)
+        self.verticalLayout_7.addItem(self.verticalSpacer)
 
         self.tabWidget = QTabWidget(self.widget_data)
         self.tabWidget.setObjectName(u"tabWidget")
-        self.tab = QWidget()
-        self.tab.setObjectName(u"tab")
-        self.verticalLayout_3 = QVBoxLayout(self.tab)
+        self.samples_tab = QWidget()
+        self.samples_tab.setObjectName(u"samples_tab")
+        self.verticalLayout_3 = QVBoxLayout(self.samples_tab)
         self.verticalLayout_3.setSpacing(0)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
         self.verticalLayout_3.setContentsMargins(0, -1, 0, 0)
-        self.tableView_active_samples = QTableView(self.tab)
+        self.tableView_active_samples = QTableView(self.samples_tab)
         self.tableView_active_samples.setObjectName(u"tableView_active_samples")
 
         self.verticalLayout_3.addWidget(self.tableView_active_samples)
 
-        self.tabWidget.addTab(self.tab, "")
-        self.tab_2 = QWidget()
-        self.tab_2.setObjectName(u"tab_2")
-        self.horizontalLayout_2 = QHBoxLayout(self.tab_2)
+        self.tabWidget.addTab(self.samples_tab, "")
+        self.remove_tab = QWidget()
+        self.remove_tab.setObjectName(u"remove_tab")
+        self.horizontalLayout_2 = QHBoxLayout(self.remove_tab)
         self.horizontalLayout_2.setSpacing(0)
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
         self.horizontalLayout_2.setContentsMargins(0, -1, 0, 0)
-        self.tableView_inactive_samples = QTableView(self.tab_2)
+        self.tableView_inactive_samples = QTableView(self.remove_tab)
         self.tableView_inactive_samples.setObjectName(u"tableView_inactive_samples")
 
         self.horizontalLayout_2.addWidget(self.tableView_inactive_samples)
 
-        self.tabWidget.addTab(self.tab_2, "")
+        self.tabWidget.addTab(self.remove_tab, "")
 
-        self.verticalLayout_2.addWidget(self.tabWidget)
+        self.verticalLayout_7.addWidget(self.tabWidget)
 
         self.splitter.addWidget(self.widget_data)
 
@@ -238,12 +269,14 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
         self.toolBar = QToolBar(MainWindow)
         self.toolBar.setObjectName(u"toolBar")
+        self.toolBar.setToolButtonStyle(Qt.ToolButtonTextUnderIcon)
         MainWindow.addToolBar(Qt.TopToolBarArea, self.toolBar)
 
         self.toolBar.addAction(self.actionOpen)
         self.toolBar.addAction(self.actionSave)
         self.toolBar.addSeparator()
         self.toolBar.addAction(self.actionImport)
+        self.toolBar.addSeparator()
         self.toolBar.addAction(self.actionExport)
         self.toolBar.addAction(self.actionExport_protocol)
         self.toolBar.addAction(self.actionExport_samplesheet)
@@ -270,7 +303,7 @@ class Ui_MainWindow(object):
 #endif // QT_CONFIG(tooltip)
         self.actionClose.setText(QCoreApplication.translate("MainWindow", u"Close", None))
         self.actionExit.setText(QCoreApplication.translate("MainWindow", u"Exit", None))
-        self.actionShowPlate.setText(QCoreApplication.translate("MainWindow", u"Show Protocol", None))
+        self.actionShowPlate.setText(QCoreApplication.translate("MainWindow", u"Protocol", None))
 #if QT_CONFIG(tooltip)
         self.actionShowPlate.setToolTip(QCoreApplication.translate("MainWindow", u"Show protocol", None))
 #endif // QT_CONFIG(tooltip)
@@ -278,7 +311,7 @@ class Ui_MainWindow(object):
 #if QT_CONFIG(tooltip)
         self.actionImport.setToolTip(QCoreApplication.translate("MainWindow", u"Import worksheet (.csv, .xls)", None))
 #endif // QT_CONFIG(tooltip)
-        self.actionPreferences.setText(QCoreApplication.translate("MainWindow", u"Show Settings", None))
+        self.actionPreferences.setText(QCoreApplication.translate("MainWindow", u"Settings", None))
 #if QT_CONFIG(tooltip)
         self.actionPreferences.setToolTip(QCoreApplication.translate("MainWindow", u"Show settings view", None))
 #endif // QT_CONFIG(tooltip)
@@ -292,34 +325,34 @@ class Ui_MainWindow(object):
 #endif // QT_CONFIG(tooltip)
         self.actionSave.setText(QCoreApplication.translate("MainWindow", u"Save", None))
         self.actionHelp.setText(QCoreApplication.translate("MainWindow", u"Help", None))
-        self.actionData.setText(QCoreApplication.translate("MainWindow", u"Show Data", None))
+        self.actionData.setText(QCoreApplication.translate("MainWindow", u"Data", None))
 #if QT_CONFIG(tooltip)
         self.actionData.setToolTip(QCoreApplication.translate("MainWindow", u"Show Data View", None))
 #endif // QT_CONFIG(tooltip)
-        self.actionExport_protocol.setText(QCoreApplication.translate("MainWindow", u"Export Protocol", None))
+        self.actionExport_protocol.setText(QCoreApplication.translate("MainWindow", u"Exp Prot As", None))
 #if QT_CONFIG(tooltip)
         self.actionExport_protocol.setToolTip(QCoreApplication.translate("MainWindow", u"Export Protocol As", None))
 #endif // QT_CONFIG(tooltip)
-        self.actionExport_samplesheet.setText(QCoreApplication.translate("MainWindow", u"Export Samplesheet", None))
+        self.actionExport_samplesheet.setText(QCoreApplication.translate("MainWindow", u"Exp Sheet As", None))
 #if QT_CONFIG(tooltip)
         self.actionExport_samplesheet.setToolTip(QCoreApplication.translate("MainWindow", u"Export SampleSheet As", None))
 #endif // QT_CONFIG(tooltip)
         self.pushButton.setText(QCoreApplication.translate("MainWindow", u"BARCODES", None))
-        self.label.setText(QCoreApplication.translate("MainWindow", u"ENTER FLOWCELL ID", None))
+        self.label_3.setText(QCoreApplication.translate("MainWindow", u"EXP ID: ", None))
+        self.label.setText(QCoreApplication.translate("MainWindow", u"KIT: ", None))
+        self.label_2.setText(QCoreApplication.translate("MainWindow", u"FLOW CELL ID: ", None))
 #if QT_CONFIG(tooltip)
         self.lineEdit_flowcell.setToolTip(QCoreApplication.translate("MainWindow", u"Enter flowcell id (must match id on flowcell)", None))
 #endif // QT_CONFIG(tooltip)
         self.lineEdit_flowcell.setText("")
-        self.pushButton_flowcell.setText(QCoreApplication.translate("MainWindow", u"ADD/UPDATE", None))
-        self.label_2.setText(QCoreApplication.translate("MainWindow", u"SELECT KIT", None))
 #if QT_CONFIG(tooltip)
         self.pushButton_togglerem.setToolTip(QCoreApplication.translate("MainWindow", u"Delete or restore sample", None))
 #endif // QT_CONFIG(tooltip)
-        self.pushButton_togglerem.setText(QCoreApplication.translate("MainWindow", u"DEL/RESTORE SAMPLES", None))
+        self.pushButton_togglerem.setText(QCoreApplication.translate("MainWindow", u"DEL/RESTR SPLS", None))
 #if QT_CONFIG(tooltip)
         self.pushButton_addcontrols.setToolTip(QCoreApplication.translate("MainWindow", u"Add positive and negative control samples", None))
 #endif // QT_CONFIG(tooltip)
-        self.pushButton_addcontrols.setText(QCoreApplication.translate("MainWindow", u"ADD/UPDATE CTRL SAMPLES", None))
+        self.pushButton_addcontrols.setText(QCoreApplication.translate("MainWindow", u"UPDATE CTRLS", None))
 #if QT_CONFIG(tooltip)
         self.pushButton_resetsort.setToolTip(QCoreApplication.translate("MainWindow", u"Reset sort to initial state", None))
 #endif // QT_CONFIG(tooltip)
@@ -327,10 +360,10 @@ class Ui_MainWindow(object):
 #if QT_CONFIG(tooltip)
         self.pushButton_clrbarcodes.setToolTip(QCoreApplication.translate("MainWindow", u"Clear all barcodes in data", None))
 #endif // QT_CONFIG(tooltip)
-        self.pushButton_clrbarcodes.setText(QCoreApplication.translate("MainWindow", u"CLEAR BARCODES", None))
-        self.pushButton_clrdata.setText(QCoreApplication.translate("MainWindow", u"CLEAR DATA TABLE", None))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QCoreApplication.translate("MainWindow", u"Tab 1", None))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), QCoreApplication.translate("MainWindow", u"Tab 2", None))
+        self.pushButton_clrbarcodes.setText(QCoreApplication.translate("MainWindow", u"CLR BCODES", None))
+        self.pushButton_clrdata.setText(QCoreApplication.translate("MainWindow", u"CLR TABLE", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.samples_tab), QCoreApplication.translate("MainWindow", u"SAMPLES", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.remove_tab), QCoreApplication.translate("MainWindow", u"REMOVED", None))
         self.toolBar.setWindowTitle(QCoreApplication.translate("MainWindow", u"toolBar", None))
     # retranslateUi
 

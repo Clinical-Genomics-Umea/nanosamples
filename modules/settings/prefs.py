@@ -10,7 +10,6 @@ class SettingsManager:
         with path(__package__, 'settings.yaml') as prefs_path:
             with prefs_path.open("r") as fh:
                 self.ys = yaml.safe_load(fh)
-                print(self.ys)
                 for key, value in self.ys.items():
                     if not self.qs.value(key):
                         self.qs.setValue(key, value['default_value'])
@@ -28,6 +27,7 @@ class SettingsManager:
             pref_dict[key]['value'] = self.qs.value(key)
             pref_dict[key]['label'] = self.ys[key]['label']
             pref_dict[key]['control'] = self.ys[key]['control']
+            pref_dict[key]['validator'] = self.ys[key]['validator']
 
         return pref_dict
 
